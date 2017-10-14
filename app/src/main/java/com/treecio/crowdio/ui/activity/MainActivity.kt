@@ -3,6 +3,7 @@ package com.treecio.crowdio.ui.activity
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.messaging.FirebaseMessaging
 import com.octo.android.robospice.persistence.exception.SpiceException
 import com.octo.android.robospice.request.listener.RequestListener
 import com.treecio.crowdio.CrowdioApp
@@ -27,6 +28,9 @@ class MainActivity : NetworkActivity(), PermissionCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        FirebaseMessaging.getInstance().subscribeToTopic("updates")
+
         init(savedInstanceState)
     }
 
