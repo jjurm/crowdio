@@ -58,7 +58,7 @@ def add_performance():
     }
 
     try_add_new_field(data_dict, new_performance, "description")
-    try_add_new_field(data_dict, new_performance, "likes")
+    try_add_new_field(data_dict, new_performance, "praises")
 
     state["performances"].append(new_performance)
 
