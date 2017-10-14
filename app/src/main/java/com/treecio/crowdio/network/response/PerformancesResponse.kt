@@ -9,6 +9,6 @@ class PerformancesResponse(
 
         @Key("performances")
         @JsonProperty("performances")
-        var id: List<Performance>? = null
+        var performances: List<Performance>? = null
 
 ) : JsonObject
