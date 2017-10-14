@@ -29,6 +29,11 @@ class MainActivity : NetworkActivity(), PermissionCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        supportActionBar?.run {
+            setDisplayShowHomeEnabled(true)
+            setIcon(R.drawable.icon_toolbar)
+        }
+
         FirebaseMessaging.getInstance().subscribeToTopic("updates")
 
         init(savedInstanceState)

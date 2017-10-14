@@ -22,7 +22,7 @@ class NotificationBuilder(private val context: Context) {
     companion object {
 
         @DrawableRes
-        private val SMALL_ICON = R.drawable.icon_music
+        private val SMALL_ICON = R.drawable.icon_white_transparent
 
         // this will be used as ID for notifications and incremented
         private var id = 1
