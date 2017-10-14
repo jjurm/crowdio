@@ -138,7 +138,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                 .center(coordinates)
                 .radius(500)
                 .strokeColor(color)
-                .strokeWidth(100)
+                .strokeWidth(20)
                 .fillColor(color));
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
