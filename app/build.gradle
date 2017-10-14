@@ -39,7 +39,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.1', {
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
@@ -82,9 +82,19 @@ dependencies {
 
     // Google Play Services
     implementation 'com.google.android.gms:play-services-maps:11.4.2'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:11.4.2'
+
+    // Firebase Cloud Messaging
+    implementation 'com.google.firebase:firebase-messaging:11.4.2'
+
 }
 
 configurations {
     compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
     compile.exclude group: "commons-io"
 }
+
+
+apply plugin: 'com.google.gms.google-services'
