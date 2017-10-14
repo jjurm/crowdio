@@ -62,6 +62,9 @@ dependencies {
     // EventBus
     implementation 'org.greenrobot:eventbus:3.0.0'
 
+    // RoboSpice
+    implementation 'com.octo.android.robospice:robospice-google-http-client:1.4.14'
+
     // Google HTTP Client Library for Java + Jackson2 extension
     implementation('com.google.http-client:google-http-client-jackson2:1.22.0') {
         exclude module: 'xpp3'
