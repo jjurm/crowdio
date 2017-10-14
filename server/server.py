@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def get_performances():
-    return jsonify(performances)
+    return json.dumps(performances)
 
 
 '''@app.route("/categories")
@@ -49,6 +49,7 @@ def add_performance():
     except:
         return "Error: count not parse either lat or lng, make sure these are int/float", 400
 
+
     new_performance = {
         "id":           identifier,
         "category":     provided_category,
@@ -56,16 +57,22 @@ def add_performance():
         "lng":          lng
     }
 
+    try:
+        new_performance["description"] = data_dict["description"]
+    except:
+        pass
+
     performances.append(new_performance)
     
-    return {}, 201
+    return json.dumps({}), 201
 
 
 @app.route("/whipe", methods=["GET"])
 def whipe():
     global performances
     performances = []
-    return "Performances whiped"
+
+    return json.dumps({}), 200
 
 
 if __name__ == "__main__":
