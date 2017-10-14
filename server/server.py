@@ -58,7 +58,7 @@ def add_performance():
 
     performances.append(new_performance)
     
-    return "New performance added: %s" % str(new_performance), 201
+    return {}, 201
 
 
 @app.route("/whipe", methods=["GET"])
