@@ -65,10 +65,6 @@ class MainActivity : NetworkActivity(), PermissionCallback {
         spiceManager.execute(request, object : RequestListener<PerformancesResponse> {
             override fun onRequestSuccess(result: PerformancesResponse?) {
                 Timber.d("Got new data" + if (result == null) " (is null)" else "")
-                result ?: return
-
-                val fragment = supportFragmentManager.findFragmentByTag(MAP_FRAGMENT_TAG) as MapFragment
-                fragment.setData(DataHolder.performances.values)
             }
             override fun onRequestFailure(spiceException: SpiceException?) {
                 Timber.e(spiceException)

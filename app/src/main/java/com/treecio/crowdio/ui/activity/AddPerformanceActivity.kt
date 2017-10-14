@@ -6,14 +6,15 @@ import android.widget.Toast
 import com.octo.android.robospice.persistence.exception.SpiceException
 import com.octo.android.robospice.request.listener.RequestListener
 import com.treecio.crowdio.R
+import com.treecio.crowdio.model.DataHolder
 import com.treecio.crowdio.model.Performance
 import com.treecio.crowdio.network.request.PerformancePushRequest
 import com.treecio.crowdio.network.response.EmptyResponse
 import com.treecio.crowdio.ui.fragment.AddPerformanceFragment
 import timber.log.Timber
 
-class AddPerformanceActivity : NetworkActivity() ,
-    AddPerformanceFragment.SubmitPerformanceCallback {
+class AddPerformanceActivity : NetworkActivity(),
+        AddPerformanceFragment.SubmitPerformanceCallback {
 
     companion object {
         const val ADD_PERFORMANCE_FRAGMENT_TAG = "fragment_add_performance"
@@ -51,9 +52,11 @@ class AddPerformanceActivity : NetworkActivity() ,
         spiceManager.execute(request, object : RequestListener<EmptyResponse> {
             override fun onRequestSuccess(result: EmptyResponse?) {
                 dialog.hide()
+                performance.id?.let { DataHolder.submittedPerformanes.add(it) }
                 Toast.makeText(this@AddPerformanceActivity, "Request successful!", Toast.LENGTH_SHORT).show()
                 finish()
             }
+
             override fun onRequestFailure(spiceException: SpiceException?) {
                 Timber.e(spiceException)
                 dialog.hide()

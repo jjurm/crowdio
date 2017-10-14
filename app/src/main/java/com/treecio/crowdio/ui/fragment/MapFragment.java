@@ -24,12 +24,18 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.treecio.crowdio.R;
+import com.treecio.crowdio.model.DataHolder;
 import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
+import com.treecio.crowdio.util.ExtensionsKt;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.HashMap;
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
+public class MapFragment extends Fragment
+        implements OnMapReadyCallback, DataHolder.PerformancesDataListener {
 
     MapView mMapView;
     private GoogleMap map;
@@ -75,6 +81,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        DataHolder.INSTANCE.getPerformanceListeners().add(this);
+    }
+
+    @Override
+    public void onStop() {
+        DataHolder.INSTANCE.getPerformanceListeners().remove(this);
+        super.onStop();
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mMapView.onResume();
@@ -104,6 +122,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    @Override
+    public void performanceDataUpdated(@NotNull final HashMap<String, Performance> performances) {
+        ExtensionsKt.runOnMainThread(getContext(), new Runnable() {
+            @Override
+            public void run() {
+                setData(performances.values());
+            }
+        });
+    }
 
     @SuppressLint("MissingPermission")
     @Override
@@ -145,4 +172,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }
+
 }
