@@ -82,9 +82,10 @@ def poke_firebase(new_performance):
         "to": "/topics/updates",
         "data": {
             "type": "new_performance",
-            "data": str(new_performance)
+            "data": json.dumps(new_performance)
         }
     }
+    print body
     
     response = requests.post(url, headers=headers, data=json.dumps(body))
     
