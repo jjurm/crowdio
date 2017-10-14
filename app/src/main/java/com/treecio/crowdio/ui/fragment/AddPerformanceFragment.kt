@@ -14,7 +14,6 @@ import android.widget.Toast
 import com.treecio.crowdio.R
 import com.treecio.crowdio.model.Category
 import com.treecio.crowdio.model.Performance
-import com.treecio.crowdio.network.request.abs.PerformancePushRequest
 import com.treecio.crowdio.ui.adapter.CategoryAdapter
 import kotlinx.android.synthetic.main.fragment_add_performance.view.*
 import java.util.*
@@ -22,6 +21,8 @@ import java.util.*
 
 
 class AddPerformanceFragment : Fragment() {
+
+    var callback: SubmitPerformanceCallback? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -49,7 +50,7 @@ class AddPerformanceFragment : Fragment() {
             return
         }
 
-        val categoryPosition = view?.list_categories?.selectedItemPosition
+        val categoryPosition = view?.list_categories?.checkedItemPosition
         if (categoryPosition == null || categoryPosition == ListView.INVALID_POSITION) {
             Toast.makeText(context, getString(R.string.must_select_category), Toast.LENGTH_SHORT).show()
             return
@@ -63,10 +64,13 @@ class AddPerformanceFragment : Fragment() {
                 Date().time,
                 category
         )
-        val request = PerformancePushRequest(context, performance)
 
-        //spiceManager.execute(request, lastRequestCacheKey, DurationInMillis.ONE_MINUTE, ListFollowersRequestListener())
+        callback!!.submit(performance)
 
+    }
+
+    interface SubmitPerformanceCallback {
+        fun submit(performance: Performance)
     }
 
 }

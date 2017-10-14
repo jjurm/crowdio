@@ -1,11 +1,10 @@
 package com.treecio.crowdio.ui.activity
 
-import com.octo.android.robospice.Jackson2GoogleHttpClientSpiceService
 import com.octo.android.robospice.SpiceManager
 
 abstract class NetworkActivity : BaseActivity() {
 
-    val spiceManager = SpiceManager(Jackson2GoogleHttpClientSpiceService::class.java)
+    val spiceManager = SpiceManager(com.octo.android.robospice.UncachedSpiceService::class.java)
 
     override fun onStart() {
         super.onStart()

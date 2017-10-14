@@ -5,9 +5,10 @@ import com.treecio.crowdio.network.Endpoints.HOST
 
 object Endpoints {
 
-    val HOST = ""
+    val HOST = "http://54.154.127.121:5000"
 
-    val PERFORMANCE_PUSH = endpoint("/performance/new")
+    val FETCH = endpoint("/")
+    val PERFORMANCE_PUSH = endpoint("/add")
 
 }
 

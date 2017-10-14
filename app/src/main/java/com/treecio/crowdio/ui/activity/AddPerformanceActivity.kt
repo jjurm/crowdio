@@ -1,10 +1,22 @@
 package com.treecio.crowdio.ui.activity
 
 import android.os.Bundle
+import android.widget.Toast
+import com.octo.android.robospice.persistence.exception.SpiceException
+import com.octo.android.robospice.request.listener.RequestListener
 import com.treecio.crowdio.R
+import com.treecio.crowdio.model.Performance
+import com.treecio.crowdio.network.request.abs.PerformancePushRequest
+import com.treecio.crowdio.network.response.EmptyResponse
 import com.treecio.crowdio.ui.fragment.AddPerformanceFragment
+import timber.log.Timber
 
-class AddPerformanceActivity : BaseActivity() {
+class AddPerformanceActivity : NetworkActivity() ,
+    AddPerformanceFragment.SubmitPerformanceCallback {
+
+    companion object {
+        const val ADD_PERFORMANCE_FRAGMENT_TAG = "fragment_add_performance"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +29,32 @@ class AddPerformanceActivity : BaseActivity() {
     }
 
     override fun initNew() {
+        val fragment = AddPerformanceFragment()
+        fragment.callback = this
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.content, AddPerformanceFragment())
+                .replace(R.id.content, fragment, ADD_PERFORMANCE_FRAGMENT_TAG)
                 .commit()
+    }
+
+    override fun initRecycled(state: Bundle) {
+        val fragment = supportFragmentManager.findFragmentByTag(ADD_PERFORMANCE_FRAGMENT_TAG) as AddPerformanceFragment
+        fragment.callback = this
+    }
+
+    override fun submit(performance: Performance) {
+        val request = PerformancePushRequest(this, performance)
+        spiceManager.execute(request, object : RequestListener<EmptyResponse> {
+            override fun onRequestSuccess(result: EmptyResponse?) {
+                Toast.makeText(this@AddPerformanceActivity, "Request successful!", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+            override fun onRequestFailure(spiceException: SpiceException?) {
+                Toast.makeText(this@AddPerformanceActivity, "Request unsuccessful!", Toast.LENGTH_SHORT).show()
+                Timber.e(spiceException)
+            }
+
+        })
     }
 
 }

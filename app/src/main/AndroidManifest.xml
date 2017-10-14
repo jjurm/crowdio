@@ -37,7 +37,7 @@
             />
 
         <service
-            android:name="com.octo.android.robospice.Jackson2GoogleHttpClientSpiceService"
+            android:name="com.octo.android.robospice.UncachedSpiceService"
             android:exported="false" />
     </application>
 
