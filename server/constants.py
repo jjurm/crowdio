@@ -5,7 +5,7 @@ state = {
 	        "lat": 41.390176,
 	        "lng": 2.181766,
 	        "category": "music",
-		"likes": 7
+	        "praises": 5
 	    }
 	]	
 }
