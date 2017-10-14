@@ -9,6 +9,8 @@
     <string name="permissions_navigate_to_settings">If you wish to grant the permissions, navigate to settings.</string>
     <string name="dismiss">Dismiss</string>
     <string name="settings">Settings</string>
+    <string name="rationale_crucial_permissions">The app needs to be granted a few permissions to work properly.</string>
+    <string name="app_cant_continue_without_permissions">Crowdio can\'t continue without the permissions.</string>
 
 
 </resources>

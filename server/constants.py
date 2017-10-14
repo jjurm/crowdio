@@ -7,6 +7,6 @@ performances = [
     }
 ]
 
-categories = ["music", "vocal", "art", "dancing", "magic", "theatre", "other"]
+#categories = ["music", "vocal", "art", "dancing", "magic", "theatre", "other"]
 
 required_fields = ["id", "categories", "lat", "lng"]
