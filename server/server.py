@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def get_performances():
-    return json.dumps(performances)
+    return json.dumps(state)
 
 
 '''@app.route("/categories")
@@ -62,15 +62,15 @@ def add_performance():
     except:
         pass
 
-    performances.append(new_performance)
+    state["performances"].append(new_performance)
     
     return json.dumps({}), 201
 
 
 @app.route("/whipe", methods=["GET"])
 def whipe():
-    global performances
-    performances = []
+    global state
+    state["performances"] = []
 
     return json.dumps({}), 200
 
