@@ -7,6 +7,7 @@ import com.octo.android.robospice.persistence.exception.SpiceException
 import com.octo.android.robospice.request.listener.RequestListener
 import com.treecio.crowdio.CrowdioApp
 import com.treecio.crowdio.R
+import com.treecio.crowdio.model.DataHolder
 import com.treecio.crowdio.network.request.PerformancesFetchRequest
 import com.treecio.crowdio.network.response.PerformancesResponse
 import com.treecio.crowdio.permission.PermissionCallback
@@ -41,9 +42,11 @@ class MainActivity : NetworkActivity(), PermissionCallback {
     }
 
     override fun onPermissionGranted(context: Context, requestId: Int, args: Bundle, result: PermissionFlowResult) {
+        val fragment = MapFragment()
+        fragment.setData(DataHolder.performances)
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.content, MapFragment(), MAP_FRAGMENT_TAG)
+                .replace(R.id.content, fragment, MAP_FRAGMENT_TAG)
                 .commit()
         fetchData()
     }
@@ -61,7 +64,7 @@ class MainActivity : NetworkActivity(), PermissionCallback {
                 result ?: return
 
                 val fragment = supportFragmentManager.findFragmentByTag(MAP_FRAGMENT_TAG) as MapFragment
-                fragment.setData(result.performances)
+                fragment.setData(DataHolder.performances)
             }
             override fun onRequestFailure(spiceException: SpiceException?) {
                 Timber.e(spiceException)
