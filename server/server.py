@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import json, types
+import requests
 from constants import *
 
 app = Flask(__name__)
@@ -60,6 +61,8 @@ def add_performance():
     try_add_new_field(data_dict, new_performance, "likes")
 
     state["performances"].append(new_performance)
+
+    poke_firebase(new_performance)
     
     return json.dumps({}), 201
 
@@ -69,6 +72,22 @@ def try_add_new_field(source, dest, field):
 	except:
 		pass
 
+def poke_firebase(new_performance):
+    url = "https://fcm.googleapis.com/fcm/send"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": "key=AIzaSyA9eQ8wiu3DPGjcdEzk3AI9qopk9b6hv2M"
+    }
+    body = {
+        "to": "/topics/updates",
+        "data": {
+            "type": "new_performance",
+            "data": str(new_performance)
+        }
+    }
+    
+    response = requests.post(url, headers=headers, data=json.dumps(body))
+    
 
 @app.route("/praise", methods=["POST"])
 def praise():
