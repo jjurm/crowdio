@@ -12,5 +12,8 @@
     <string name="rationale_crucial_permissions">The app needs to be granted a few permissions to work properly.</string>
     <string name="app_cant_continue_without_permissions">Crowdio can\'t continue without the permissions.</string>
 
+    <!-- MainActivity -->
+    <string name="add_performance">Add performance</string>
+
 
 </resources>
