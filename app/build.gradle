@@ -22,6 +22,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+        }
     }
 }
 
@@ -40,8 +43,6 @@ dependencies {
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
     // Timber
     implementation 'com.jakewharton.timber:timber:4.5.1'
@@ -79,4 +80,9 @@ dependencies {
 
     // Google Play Services
     implementation 'com.google.android.gms:play-services-maps:11.4.2'
+}
+
+configurations {
+    compile.exclude group: "org.apache.httpcomponents", module: "httpclient"
+    compile.exclude group: "commons-io"
 }
