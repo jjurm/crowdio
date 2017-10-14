@@ -30,5 +30,8 @@
     <string name="unknown_location">Unknown location!</string>
     <string name="must_select_category">You must select a category</string>
 
+    <!-- Notifications -->
+    <string name="performance_nearby">A %1$s performance nearby</string>
+    <string name="you_might_be_interested">You might be interested to see the performance.</string>
 
 </resources>
