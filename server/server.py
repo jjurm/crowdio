@@ -4,7 +4,7 @@ from constants import *
 
 app = Flask(__name__)
 
-@app.route("/performances")
+@app.route("/")
 def get_performances():
     return jsonify(performances)
 
@@ -30,6 +30,8 @@ def add_performance():
     # Check id - Todo?
     identifier = data_dict["id"]
 
+    provided_category = data_dict["category"]
+
     # Check categories
     '''if type(data_dict["categories"]) is not list:
         return "Error: categories must be an array, valid elements are: " + ", ".join(categories), 400
@@ -49,7 +51,7 @@ def add_performance():
 
     new_performance = {
         "id":           identifier,
-        "categories":   provided_categories,
+        "category":     provided_category,
         "lat":          lat,
         "lng":          lng
     }
@@ -61,7 +63,9 @@ def add_performance():
 
 @app.route("/whipe", methods=["GET"])
 def whipe():
-    performances = {}
+    global performances
+    performances = []
+    return "Performances whiped"
 
 
 if __name__ == "__main__":
