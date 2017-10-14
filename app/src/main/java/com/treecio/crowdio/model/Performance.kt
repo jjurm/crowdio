@@ -14,9 +14,9 @@ data class Performance(
         @JsonProperty("timestamp_start")
         var timestampStart: Long? = null,
 
-        @Key("type")
-        @JsonProperty("type")
-        var type: PerformanceType? = null,
+        @Key("category")
+        @JsonProperty("category")
+        var category: Category? = null,
 
         @Key("rating")
         @JsonProperty("rating")

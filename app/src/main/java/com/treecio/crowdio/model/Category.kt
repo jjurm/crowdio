@@ -5,7 +5,7 @@ import android.support.annotation.StringRes
 import com.treecio.crowdio.util.type.DrawableResource
 import com.treecio.crowdio.util.type.StringResource
 
-enum class PerformanceType(
+enum class Category(
         @StringRes val title: StringResource,
         @DrawableRes val icon: DrawableResource
 ) {
