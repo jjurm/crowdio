@@ -2,7 +2,7 @@ package com.treecio.crowdio.ui.activity
 
 import android.os.Bundle
 import com.treecio.crowdio.R
-import com.treecio.crowdio.ui.fragment.AddPerformanceFragment
+import com.treecio.crowdio.ui.fragment.MapFragment
 
 class MainActivity : BaseActivity() {
 
@@ -15,7 +15,7 @@ class MainActivity : BaseActivity() {
         super.initNew()
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.content, AddPerformanceFragment())
+                .replace(R.id.content, MapFragment())
                 .commit()
     }
 
