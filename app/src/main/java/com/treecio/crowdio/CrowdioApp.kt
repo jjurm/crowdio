@@ -1,11 +1,11 @@
 package com.treecio.crowdio
 
-import android.app.Application
+import android.support.multidex.MultiDexApplication
 import android.support.v7.app.AppCompatDelegate
 import com.facebook.stetho.Stetho
 import timber.log.Timber
 
-class CrowdioApp : Application() {
+class CrowdioApp : MultiDexApplication() {
 
     override fun onCreate() {
         super.onCreate()
