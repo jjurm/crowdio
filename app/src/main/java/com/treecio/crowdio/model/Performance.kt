@@ -10,6 +10,13 @@ data class Performance(
         @JsonProperty("id")
         var id: String? = null,
 
+        @Key("lat")
+        @JsonProperty("lat")
+        var lat: Double? = null,
+        @Key("lng")
+        @JsonProperty("lng")
+        var lng: Double? = null,
+
         @Key("timestamp_start")
         @JsonProperty("timestamp_start")
         var timestampStart: Long? = null,

@@ -35,6 +35,10 @@
             android:name=".ui.activity.AddPerformanceActivity"
             android:parentActivityName=".ui.activity.MainActivity"
             />
+
+        <service
+            android:name="com.octo.android.robospice.Jackson2GoogleHttpClientSpiceService"
+            android:exported="false" />
     </application>
 
 </manifest>
