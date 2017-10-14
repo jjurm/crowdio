@@ -23,7 +23,10 @@
 
     <!-- MainActivity -->
     <string name="add_performance">Add performance</string>
+
+    <!-- AddPerformanceActivity -->
     <string name="description">Description</string>
+    <string name="submit">Submit</string>
 
 
 </resources>
