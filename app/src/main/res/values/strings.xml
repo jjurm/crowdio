@@ -12,8 +12,18 @@
     <string name="rationale_crucial_permissions">The app needs to be granted a few permissions to work properly.</string>
     <string name="app_cant_continue_without_permissions">Crowdio can\'t continue without the permissions.</string>
 
+    <!-- Categories -->
+    <string name="category_art">Art</string>
+    <string name="category_dancing">Dancing</string>
+    <string name="category_vocal">Vocal</string>
+    <string name="category_magic">Magic</string>
+    <string name="category_music">Music</string>
+    <string name="category_theatre">Theatre</string>
+    <string name="category_other">Other</string>
+
     <!-- MainActivity -->
     <string name="add_performance">Add performance</string>
+    <string name="description">Description</string>
 
 
 </resources>

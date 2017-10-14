@@ -1,6 +1,7 @@
 package com.treecio.crowdio.ui.adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,7 @@ class CategoryAdapter(context: Context) : ArrayAdapter<Category>(context, R.layo
         val text = newView.findViewById<TextView>(R.id.list_item_text)
         // Populate the data into the template view using the data object
         image.setImageResource(category.icon)
+        image.setColorFilter(ContextCompat.getColor(context, category.color), android.graphics.PorterDuff.Mode.MULTIPLY)
         text.setText(category.title)
         // Return the completed view to render on screen
         return newView
