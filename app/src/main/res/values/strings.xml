@@ -27,6 +27,8 @@
     <!-- AddPerformanceActivity -->
     <string name="description">Description</string>
     <string name="submit">Submit</string>
+    <string name="unknown_location">Unknown location!</string>
+    <string name="must_select_category">You must select a category</string>
 
 
 </resources>

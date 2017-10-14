@@ -7,6 +7,8 @@ object Endpoints {
 
     val HOST = ""
 
+    val PERFORMANCE_PUSH = endpoint("/performance/new")
+
 }
 
 class Endpoint(stringUrl: String) {

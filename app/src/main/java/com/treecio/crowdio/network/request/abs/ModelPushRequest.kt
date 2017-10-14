@@ -1,4 +1,4 @@
-package com.treecio.crowdio.network.request
+package com.treecio.crowdio.network.request.abs
 
 import android.content.Context
 import com.google.api.client.http.HttpRequest
