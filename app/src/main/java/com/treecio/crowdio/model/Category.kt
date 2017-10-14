@@ -3,6 +3,7 @@ package com.treecio.crowdio.model
 import android.support.annotation.ColorRes
 import android.support.annotation.DrawableRes
 import android.support.annotation.StringRes
+import com.google.api.client.util.NullValue
 import com.google.api.client.util.Value
 import com.treecio.crowdio.R
 import com.treecio.crowdio.util.type.ColorResource
@@ -21,6 +22,6 @@ enum class Category(
     @Value("magic") magic(R.string.category_magic, R.drawable.icon_magic, R.color.colorCategoryMagic),
     @Value("music") music(R.string.category_music, R.drawable.icon_music, R.color.colorCategoryMusic),
     @Value("theatre") theatre(R.string.category_theatre, R.drawable.icon_theatre, R.color.colorCategoryTheatre),
-    @Value("other") other(R.string.category_other, R.drawable.icon_other, R.color.colorCategoryOther);
+    @Value("other") @NullValue other(R.string.category_other, R.drawable.icon_other, R.color.colorCategoryOther);
 
 }
