@@ -3,6 +3,7 @@ package com.treecio.crowdio.ui.fragment;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -19,8 +20,10 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.treecio.crowdio.R;
 import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
@@ -102,7 +105,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         // For showing a move to my location button
         map.setMyLocationEnabled(true);
-
+        
         LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -121,6 +124,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     public void showPerformance(Performance performance) {
 
+        LatLng sydney = new LatLng(-34, 151);
+
+        // Extra: popup on the circle
+        map.addCircle(new CircleOptions()
+                .center(sydney)
+                .radius(500)
+                .strokeColor(Color.RED)
+                .strokeWidth(100)
+                .fillColor(0x220000FF));
+
+        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
 }
