@@ -49,7 +49,6 @@ def add_performance():
     except:
         return "Error: count not parse either lat or lng, make sure these are int/float", 400
 
-
     new_performance = {
         "id":           identifier,
         "category":     provided_category,
@@ -70,6 +69,23 @@ def try_add_new_field(source, dest, field):
 	except:
 		pass
 
+
+@app.route("/praise", methods=["POST"])
+def praise():
+    try:
+        data_dict = json.loads(request.get_data())
+        identifier = data_dict["id"]
+    except:
+        return "Error: performance id not provided", 400
+
+    target_performance = [p for p in state["performances"] if p["id"] == identifier]
+    
+    if len(target_performance) < 1:
+        return "Error: could not find performance by id"
+
+    target_performance[0]["praises"] += 1
+
+    return json.dumps({"message": "Performance praised"}), 200
 
 @app.route("/whipe", methods=["GET"])
 def whipe():
