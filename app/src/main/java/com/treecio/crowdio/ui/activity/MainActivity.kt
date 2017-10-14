@@ -43,7 +43,7 @@ class MainActivity : NetworkActivity(), PermissionCallback {
 
     override fun onPermissionGranted(context: Context, requestId: Int, args: Bundle, result: PermissionFlowResult) {
         val fragment = MapFragment()
-        fragment.setData(DataHolder.performances)
+        fragment.setData(DataHolder.performances.values)
         supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.content, fragment, MAP_FRAGMENT_TAG)
@@ -64,7 +64,7 @@ class MainActivity : NetworkActivity(), PermissionCallback {
                 result ?: return
 
                 val fragment = supportFragmentManager.findFragmentByTag(MAP_FRAGMENT_TAG) as MapFragment
-                fragment.setData(DataHolder.performances)
+                fragment.setData(DataHolder.performances.values)
             }
             override fun onRequestFailure(spiceException: SpiceException?) {
                 Timber.e(spiceException)

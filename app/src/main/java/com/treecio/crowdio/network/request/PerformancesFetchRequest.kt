@@ -11,6 +11,6 @@ class PerformancesFetchRequest(context: Context) : ModelFetchRequest<Performance
 
     override fun onSuccess(result: PerformancesResponse) {
         super.onSuccess(result)
-        result.performances?.let { DataHolder.performances = it }
+        result.performances?.let { DataHolder.updatePerformances(it) }
     }
 }

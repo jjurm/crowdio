@@ -27,15 +27,12 @@ import com.treecio.crowdio.R;
 import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     MapView mMapView;
     private GoogleMap map;
-
-    private List<Performance> performances = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,8 +98,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         mMapView.onLowMemory();
     }
 
-    public void setData(List<Performance> performances) {
-        this.performances = performances;
+    public void setData(Collection<Performance> performances) {
         for (Performance performance : performances) {
             showPerformance(performance);
         }
