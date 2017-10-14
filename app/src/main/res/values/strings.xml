@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Crowdio</string>
+
+    <!-- PERMISSIONS -->
+    <string name="permissions_needed">Permissions needed</string>
+    <string name="permissions_denied">Permissions denied</string>
+    <string name="retry">Re-try</string>
+    <string name="deny">Deny</string>
+    <string name="permissions_navigate_to_settings">If you wish to grant the permissions, navigate to settings.</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="settings">Settings</string>
+
+
 </resources>
