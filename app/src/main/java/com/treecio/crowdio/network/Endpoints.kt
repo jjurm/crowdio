@@ -9,6 +9,7 @@ object Endpoints {
 
     val PERFORMANCES_FETCH = endpoint("/")
     val PERFORMANCE_PUSH = endpoint("/add")
+    val PRAISE = endpoint("/praise")
 
 }
 
