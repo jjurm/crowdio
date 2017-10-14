@@ -21,7 +21,7 @@ class AddPerformanceActivity : NetworkActivity() ,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_performance)
+        setContentView(R.layout.activity_simple_fragment)
         supportActionBar?.let {
             setTitle(R.string.add_performance)
         }
