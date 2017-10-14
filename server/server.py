@@ -59,5 +59,10 @@ def add_performance():
     return "New performance added: %s" % str(new_performance), 201
 
 
+@app.route("/whipe", methods=["GET"])
+def whipe():
+    performances = {}
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
