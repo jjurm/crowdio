@@ -1,12 +1,13 @@
 package com.treecio.crowdio.ui.activity
 
+import android.app.ProgressDialog
 import android.os.Bundle
 import android.widget.Toast
 import com.octo.android.robospice.persistence.exception.SpiceException
 import com.octo.android.robospice.request.listener.RequestListener
 import com.treecio.crowdio.R
 import com.treecio.crowdio.model.Performance
-import com.treecio.crowdio.network.request.abs.PerformancePushRequest
+import com.treecio.crowdio.network.request.PerformancePushRequest
 import com.treecio.crowdio.network.response.EmptyResponse
 import com.treecio.crowdio.ui.fragment.AddPerformanceFragment
 import timber.log.Timber
@@ -43,17 +44,21 @@ class AddPerformanceActivity : NetworkActivity() ,
     }
 
     override fun submit(performance: Performance) {
+        val dialog = ProgressDialog.show(this, "", "Submitting...", true)
+        dialog.show()
+
         val request = PerformancePushRequest(this, performance)
         spiceManager.execute(request, object : RequestListener<EmptyResponse> {
             override fun onRequestSuccess(result: EmptyResponse?) {
+                dialog.hide()
                 Toast.makeText(this@AddPerformanceActivity, "Request successful!", Toast.LENGTH_SHORT).show()
                 finish()
             }
             override fun onRequestFailure(spiceException: SpiceException?) {
-                Toast.makeText(this@AddPerformanceActivity, "Request unsuccessful!", Toast.LENGTH_SHORT).show()
                 Timber.e(spiceException)
+                dialog.hide()
+                Toast.makeText(this@AddPerformanceActivity, "Request unsuccessful!", Toast.LENGTH_SHORT).show()
             }
-
         })
     }
 
