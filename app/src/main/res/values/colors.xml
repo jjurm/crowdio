@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#6B3434</color>
     <color name="colorAccent">@color/colorPrimaryDark</color>
     <color name="backroundLight">#F7F7F2</color>
+    <color name="colorCategoryArt">#F3A712</color>
+    <color name="colorCategoryMusic">#7FB069</color>
+    <color name="colorCategoryMagic">#177E89</color>
+    <color name="colorCategoryDance">#CA3C25</color>
+    <color name="colorCategoryVocal">#E67F0D</color>
+    <color name="colorCategoryTheatre">#B4656F</color>
 </resources>
