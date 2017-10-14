@@ -2,6 +2,7 @@
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/backgroundLight"
@@ -13,9 +14,57 @@
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="32dp"
-        android:text="fkljsdklflkjsdflkj"
         >
 
+
+        <TextView
+            android:id="@+id/categorieTextView"
+            android:layout_width="113dp"
+            android:layout_height="19dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="83dp" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="113dp"
+            android:layout_height="19dp"
+            android:text="Name"
+            tools:layout_editor_absoluteX="109dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/profile"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <TextView
+            android:id="@+id/locationTextView"
+            android:layout_width="113dp"
+            android:layout_height="19dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="111dp"
+            tools:layout_editor_absoluteY="42dp" />
+
+        <TextView
+            android:id="@+id/detailsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="9dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="149dp" />
+
+        <TextView
+            android:id="@+id/detailTextView"
+            android:layout_width="286dp"
+            android:layout_height="120dp"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="190dp" />
 
 
     </android.support.constraint.ConstraintLayout>
