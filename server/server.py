@@ -4,14 +4,14 @@ from constants import *
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/performances")
 def get_performances():
     return jsonify(performances)
 
 
-@app.route("/categories")
+'''@app.route("/categories")
 def get_categories():
-    return categories
+    return categories'''
 
 
 @app.route("/add", methods=["POST"])
@@ -22,24 +22,23 @@ def add_performance():
         return "Error: could not parse JSON, make sure it is not malformed", 400
     
     provided_fields = data_dict.keys()
-
     missing_fields = [field for field in required_fields if field not in provided_fields]
     
     if len(missing_fields) > 0:
         return "Error: missing fields: " + ", ".join(missing_fields), 400
 
-    # Check id
+    # Check id - Todo?
     identifier = data_dict["id"]
 
     # Check categories
-    if type(data_dict["categories"]) is not list:
+    '''if type(data_dict["categories"]) is not list:
         return "Error: categories must be an array, valid elements are: " + ", ".join(categories), 400
 
     provided_categories = data_dict["categories"]
     invalid_categories = [cat for cat in provided_categories if cat.lower() not in categories]
 
     if len(invalid_categories) > 0:
-        return "Error: invalid categories provided: %s \nValid categories are: %s" % (", ".join(invalid_categories), ", ".join(categories)), 400
+        return "Error: invalid categories provided: %s \nValid categories are: %s" % (", ".join(invalid_categories), ", ".join(categories)), 400'''
 
     # Check coordinates
     try:
