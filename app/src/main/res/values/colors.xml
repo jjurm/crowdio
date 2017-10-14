@@ -8,11 +8,11 @@
     <color name="backgroundLight">#F7F7F2</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="colorCategoryArt">#F3A712</color>
-    <color name="colorCategoryMusic">#7FB069</color>
-    <color name="colorCategoryMagic">#177E89</color>
-    <color name="colorCategoryDancing">#CA3C25</color>
-    <color name="colorCategoryVocal">#E67F0D</color>
-    <color name="colorCategoryTheatre">#B4656F</color>
-    <color name="colorCategoryOther">#878C8F</color>
+    <color name="colorCategoryArt">#FFF3A712</color>
+    <color name="colorCategoryMusic">#FF7FB069</color>
+    <color name="colorCategoryMagic">#FF177E89</color>
+    <color name="colorCategoryDancing">#FFCA3C25</color>
+    <color name="colorCategoryVocal">#FFE67F0D</color>
+    <color name="colorCategoryTheatre">#FFB4656F</color>
+    <color name="colorCategoryOther">#FF878C8F</color>
 </resources>

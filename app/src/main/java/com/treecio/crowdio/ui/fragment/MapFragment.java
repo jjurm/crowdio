@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,12 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.treecio.crowdio.R;
+import com.treecio.crowdio.model.Category;
 import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
 
@@ -105,7 +110,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         // For showing a move to my location button
         map.setMyLocationEnabled(true);
-        
+
         LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -124,17 +129,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
     public void showPerformance(Performance performance) {
 
-        LatLng sydney = new LatLng(-34, 151);
+
+        int color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
+        LatLng coordinates = new LatLng(performance.getLat(), performance.getLng());
 
         // Extra: popup on the circle
         map.addCircle(new CircleOptions()
-                .center(sydney)
+                .center(coordinates)
                 .radius(500)
-                .strokeColor(Color.RED)
+                .strokeColor(color)
                 .strokeWidth(100)
-                .fillColor(0x220000FF));
+                .fillColor(color));
 
-        map.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }
 
 }
