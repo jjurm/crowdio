@@ -57,14 +57,18 @@ def add_performance():
         "lng":          lng
     }
 
-    try:
-        new_performance["description"] = data_dict["description"]
-    except:
-        pass
+    try_add_new_field(data_dict, new_performance, "description")
+    try_add_new_field(data_dict, new_performance, "likes")
 
     state["performances"].append(new_performance)
     
     return json.dumps({}), 201
+
+def try_add_new_field(source, dest, field):
+	try:
+		dest[field] = source[field]
+	except:
+		pass
 
 
 @app.route("/whipe", methods=["GET"])
