@@ -56,13 +56,15 @@ class AddPerformanceFragment : Fragment() {
             return
         }
         val category = Category.values()[categoryPosition]
+        val description = view?.description?.text?.toString()
 
         val performance = Performance(
                 UUID.randomUUID().toString(),
                 location.latitude,
                 location.longitude,
                 Date().time,
-                category
+                category,
+                description
         )
 
         callback!!.submit(performance)

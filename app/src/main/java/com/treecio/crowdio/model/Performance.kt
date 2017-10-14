@@ -24,6 +24,9 @@ data class Performance(
         @Key("category")
         @JsonProperty("category")
         var category: Category? = null,
+        @Key("description")
+        @JsonProperty("description")
+        var description: String? = null,
 
         @Key("rating")
         @JsonProperty("rating")
