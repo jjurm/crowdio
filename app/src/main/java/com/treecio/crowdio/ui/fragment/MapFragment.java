@@ -142,12 +142,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // Extra: popup on the circle
         map.addCircle(new CircleOptions()
                 .center(coordinates)
-                .radius(500)
+                .radius(50)
                 .strokeColor(color)
-                .strokeWidth(20)
+                .strokeWidth(10)
                 .fillColor(color));
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }
-
 }
