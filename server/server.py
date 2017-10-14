@@ -1,40 +1,63 @@
 from flask import Flask, request, jsonify
+import json, types
+from constants import *
+
 app = Flask(__name__)
-
-performances = [
-    {
-        "id": 0,
-        "title": "Nancy Juggling",
-        "lat": 41.390176,
-        "lng": 2.181766
-    }
-]
-
-next_id = 1
-
 
 @app.route("/")
 def get_performances():
-    print performances
     return jsonify(performances)
+
+
+@app.route("/categories")
+def get_categories():
+    return categories
 
 
 @app.route("/add", methods=["POST"])
 def add_performance():
-    print request
-    if not request.json:
-        abort(400)
+    try:
+        data_dict = json.loads(request.get_data())
+    except:
+        return "Error: could not parse JSON, make sure it is not malformed", 400
+    
+    provided_fields = data_dict.keys()
 
-    new = {
-        "id": next_id,
-        "title": request.json["title"],
-        "lat":   request.json["lat"],
-        "lng":   request.json["lng"]
+    missing_fields = [field for field in required_fields if field not in provided_fields]
+    
+    if len(missing_fields) > 0:
+        return "Error: missing fields: " + ", ".join(missing_fields), 400
+
+    # Check id
+    identifier = data_dict["id"]
+
+    # Check categories
+    if type(data_dict["categories"]) is not list:
+        return "Error: categories must be an array, valid elements are: " + ", ".join(categories), 400
+
+    provided_categories = data_dict["categories"]
+    invalid_categories = [cat for cat in provided_categories if cat.lower() not in categories]
+
+    if len(invalid_categories) > 0:
+        return "Error: invalid categories provided: %s \nValid categories are: %s" % (", ".join(invalid_categories), ", ".join(categories)), 400
+
+    # Check coordinates
+    try:
+        lat = float(data_dict["lat"])
+        lng = float(data_dict["lng"])
+    except:
+        return "Error: count not parse either lat or lng, make sure these are int/float", 400
+
+    new_performance = {
+        "id":           identifier,
+        "categories":   provided_categories,
+        "lat":          lat,
+        "lng":          lng
     }
-    next_id += 1
-    performances.append(task)
 
-    return jsonify(performances), 201
+    performances.append(new_performance)
+    
+    return "New performance added: %s" % str(new_performance), 201
 
 
 if __name__ == "__main__":
