@@ -38,7 +38,8 @@ import java.util.Collection;
 import java.util.HashMap;
 
 public class MapFragment extends Fragment
-        implements OnMapReadyCallback, DataHolder.PerformancesDataListener {
+        implements OnMapReadyCallback, DataHolder.PerformancesDataListener,
+        GoogleMap.OnCircleClickListener {
 
     MapView mMapView;
     private GoogleMap map;
@@ -153,14 +154,7 @@ public class MapFragment extends Fragment
         // For showing a move to my location button
         map.setMyLocationEnabled(true);
 
-        map.setOnCircleClickListener(new GoogleMap.OnCircleClickListener() {
-            @Override
-            public void onCircleClick(Circle circle) {
-                Intent resultIntent = new Intent(getContext(), DetailActivity.class);
-                resultIntent.putExtras(DetailActivity.Companion.getArguments(circle.getId()));
-                getContext().startActivity(resultIntent);
-            }
-        });
+        map.setOnCircleClickListener(this);
 
         LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
@@ -207,8 +201,16 @@ public class MapFragment extends Fragment
                 .fillColor(color)
         );
         circle.setTag(performance.getId());
+        circle.setClickable(true);
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
+    }
+
+    @Override
+    public void onCircleClick(Circle circle) {
+        Intent resultIntent = new Intent(getContext(), DetailActivity.class);
+        resultIntent.putExtras(DetailActivity.Companion.getArguments((String) circle.getTag()));
+        getContext().startActivity(resultIntent);
     }
 
 }
