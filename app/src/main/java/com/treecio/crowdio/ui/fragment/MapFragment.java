@@ -202,8 +202,6 @@ public class MapFragment extends Fragment
         );
         circle.setTag(performance.getId());
         circle.setClickable(true);
-
-        map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }
 
     @Override
