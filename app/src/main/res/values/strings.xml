@@ -37,5 +37,8 @@
     <!-- Notifications -->
     <string name="performance_nearby">A %1$s performance nearby</string>
     <string name="you_might_be_interested">You might be interested to see the performance.</string>
+    <string name="performer_colon">Performer:</string>
+    <string name="place_colon">Place:</string>
+    <string name="category_colon">Category:</string>
 
 </resources>

@@ -28,7 +28,7 @@ class DetailFragment() : Fragment() {
         v.categorieTextView.setText(performance.category?.title ?: Category.other.title)
 
         v.nameTextView.text = "Anonymous"
-        v.profile_image.setImageResource(performance.category?.icon ?: Category.other.icon)
+        v.profile_image.setImageResource(performance.category?.coloredIcon ?: Category.other.icon)
         v.locationTextView.text = "Somewhere"
         v.detailTextView.text = performance.description
 
