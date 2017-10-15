@@ -20,6 +20,11 @@ class DetailActivity : NetworkActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_simple_fragment)
+
+        val id = intent.getStringExtra(EXTRA_PERFORMANCE_ID)
+
+
+
         init(savedInstanceState)
     }
 
@@ -29,6 +34,10 @@ class DetailActivity : NetworkActivity() {
                 .beginTransaction()
                 .add(R.id.content, fragment)
                 .commit()
+    }
+
+    private fun showPerformance(performance: Performance) {
+
     }
 
 }

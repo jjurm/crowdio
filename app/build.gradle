@@ -89,6 +89,8 @@ dependencies {
     // Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-messaging:11.4.2'
 
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
 }
 
 configurations {

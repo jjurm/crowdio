@@ -44,7 +44,6 @@
             android:id="@+id/profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/profile"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,8 +76,9 @@
             android:layout_height="120dp"
             android:layout_marginTop="8dp"
             android:text="TextView"
+            app:layout_constraintStart_toStartOf="@+id/detailsTextView"
             app:layout_constraintTop_toBottomOf="@+id/detailsTextView"
-            tools:layout_editor_absoluteX="16dp" />
+            />
 
 
     </android.support.constraint.ConstraintLayout>
