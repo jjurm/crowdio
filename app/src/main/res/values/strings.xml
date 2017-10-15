@@ -40,5 +40,6 @@
     <string name="performer_colon">Performer:</string>
     <string name="place_colon">Place:</string>
     <string name="category_colon">Category:</string>
+    <string name="praise">Praise</string>
 
 </resources>

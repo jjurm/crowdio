@@ -93,6 +93,10 @@ class DetailFragment() : Fragment(), OnMapReadyCallback {
         v.locationTextView.text = "Somewhere"
         v.detailTextView.text = performance.description
 
+        performance.category?.color?.let {
+            v.praiseImageButton.backgroundTintList = context.getResources().getColorStateList(it);
+        }
+
     }
 
 }

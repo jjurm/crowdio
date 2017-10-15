@@ -143,20 +143,23 @@
         tools:text="TextView"
         />
 
-        <ImageButton
-            android:id="@+id/praiseImageButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detailTextView"
-            app:srcCompat="@drawable/style_icons_product_human_gestures2" />
+    <Button
+        android:id="@+id/praiseImageButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        android:text="@string/praise"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailTextView"
+        />
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="250dp"
         android:layout_marginBottom="-32dp"
         android:layout_marginEnd="-32dp"
         android:layout_marginStart="-32dp"
