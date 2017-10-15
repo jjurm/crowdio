@@ -29,6 +29,8 @@ import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
 import com.treecio.crowdio.util.ExtensionsKt;
 
+import com.google.android.gms.maps.model.MapStyleOptions;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -39,6 +41,10 @@ public class MapFragment extends Fragment
 
     MapView mMapView;
     private GoogleMap map;
+    private int color;
+    private long radius;
+    private LatLng coordinates;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -154,19 +160,21 @@ public class MapFragment extends Fragment
                     .build();                   // Creates a CameraPosition from the builder
             map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
+
+        // Set retro style Google Maps
+        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.style_json));
     }
 
     public void showPerformance(Performance performance) {
+        //radius = performance.getRating();
+        color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
+        coordinates = new LatLng(performance.getLat(), performance.getLng());
 
-
-        int color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
-        LatLng coordinates = new LatLng(performance.getLat(), performance.getLng());
-        long radius = performance.getRating();
 
         // Extra: popup on the circle
         map.addCircle(new CircleOptions()
                 .center(coordinates)
-                .radius(radius)
+                .radius(10)
                 .strokeColor(color)
                 .strokeWidth(5)
                 .fillColor(color));
