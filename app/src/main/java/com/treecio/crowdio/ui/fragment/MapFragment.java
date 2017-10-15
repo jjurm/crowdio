@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +21,16 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.treecio.crowdio.R;
 import com.treecio.crowdio.model.DataHolder;
 import com.treecio.crowdio.model.Performance;
 import com.treecio.crowdio.ui.activity.AddPerformanceActivity;
+import com.treecio.crowdio.ui.activity.DetailActivity;
 import com.treecio.crowdio.util.ExtensionsKt;
-
-import com.google.android.gms.maps.model.MapStyleOptions;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,10 +42,11 @@ public class MapFragment extends Fragment
 
     MapView mMapView;
     private GoogleMap map;
+    private Collection<Performance> stack;
+
     private int color;
     private long radius = 0;
     private LatLng coordinates;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -124,8 +125,13 @@ public class MapFragment extends Fragment
     }
 
     public void setData(Collection<Performance> performances) {
-        for (Performance performance : performances) {
-            showPerformance(performance);
+        if (!isAdded()) {
+            stack = performances;
+        } else {
+            stack = null;
+            for (Performance performance : performances) {
+                showPerformance(performance);
+            }
         }
     }
 
@@ -147,6 +153,14 @@ public class MapFragment extends Fragment
         // For showing a move to my location button
         map.setMyLocationEnabled(true);
 
+        map.setOnCircleClickListener(new GoogleMap.OnCircleClickListener() {
+            @Override
+            public void onCircleClick(Circle circle) {
+                Intent resultIntent = new Intent(getContext(), DetailActivity.class);
+                resultIntent.putExtras(DetailActivity.Companion.getArguments(circle.getId()));
+            }
+        });
+
         LocationManager locationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
 
@@ -164,27 +178,34 @@ public class MapFragment extends Fragment
 
         // Set retro style Google Maps
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.style_json));
+
+        if (stack != null) {
+            for (Performance performance : stack) {
+                showPerformance(performance);
+            }
+            stack = null;
+        }
     }
 
     public void showPerformance(Performance performance) {
-        try {
-            radius = performance.getRating();
-        } catch (NullPointerException e) {
-            Log.d(null, "No rating yet");
+        Long rating = performance.getRating();
+        if (rating == null) {
+            rating = 0L;
         }
+        double radius = 5 * Math.log(rating + 10) - 6;
         color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
         coordinates = new LatLng(performance.getLat(), performance.getLng());
 
 
         // Extra: popup on the circle
-        map.addCircle(new CircleOptions()
+        Circle circle = map.addCircle(new CircleOptions()
                 .center(coordinates)
-                .radius(Math.log(radius))
+                .radius(radius)
                 .strokeColor(color)
                 .strokeWidth(5)
-                .fillColor(color));
-
-
+                .fillColor(color)
+        );
+        circle.setTag(performance.getId());
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }

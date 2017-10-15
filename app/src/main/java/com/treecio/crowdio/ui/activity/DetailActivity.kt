@@ -15,9 +15,11 @@ class DetailActivity : NetworkActivity(), DataHolder.PerformancesDataListener {
 
         private const val TAG_FRAGMENT_DETAILS = "fragment_details"
         private const val EXTRA_PERFORMANCE_ID = "performance_id"
-        fun getArguments(performance: Performance): Bundle {
+        fun getArguments(performance: Performance) = getArguments(performance.id)
+
+        fun getArguments(id: String?): Bundle {
             val b = Bundle()
-            b.putString(EXTRA_PERFORMANCE_ID, performance.id)
+            b.putString(EXTRA_PERFORMANCE_ID, id)
             return b
         }
 
@@ -65,6 +67,10 @@ class DetailActivity : NetworkActivity(), DataHolder.PerformancesDataListener {
         val performance = DataHolder.performances[id] ?: return
         val fragment = supportFragmentManager.findFragmentByTag(TAG_FRAGMENT_DETAILS) as DetailFragment
         runOnUiThread {
+            supportActionBar?.let {
+                val catTitle = performance.category?.title?.let { getString(it) } ?: ""
+                title = getString(R.string.placeholder_performance, catTitle).trim().capitalize()
+            }
             fragment.showPerformance(performance)
         }
     }

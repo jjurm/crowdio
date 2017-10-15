@@ -32,6 +32,7 @@
 
     <!-- DetailActivity -->
     <string name="description_colon">Description:</string>
+    <string name="placeholder_performance">%1$s performance</string>
 
     <!-- Notifications -->
     <string name="performance_nearby">A %1$s performance nearby</string>
