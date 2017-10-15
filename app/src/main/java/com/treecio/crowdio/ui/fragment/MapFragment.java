@@ -191,7 +191,6 @@ public class MapFragment extends Fragment
         color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
         coordinates = new LatLng(performance.getLat(), performance.getLng());
 
-
         // Extra: popup on the circle
         Circle circle = map.addCircle(new CircleOptions()
                 .center(coordinates)
