@@ -161,13 +161,14 @@ public class MapFragment extends Fragment
 
         int color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
         LatLng coordinates = new LatLng(performance.getLat(), performance.getLng());
+        long radius = performance.getRating();
 
         // Extra: popup on the circle
         map.addCircle(new CircleOptions()
                 .center(coordinates)
-                .radius(50)
+                .radius(radius)
                 .strokeColor(color)
-                .strokeWidth(10)
+                .strokeWidth(5)
                 .fillColor(color));
 
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
