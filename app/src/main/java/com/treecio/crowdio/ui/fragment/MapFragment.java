@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,7 +43,7 @@ public class MapFragment extends Fragment
     MapView mMapView;
     private GoogleMap map;
     private int color;
-    private long radius;
+    private long radius = 0;
     private LatLng coordinates;
 
 
@@ -166,7 +167,11 @@ public class MapFragment extends Fragment
     }
 
     public void showPerformance(Performance performance) {
-        //radius = performance.getRating();
+        try {
+            radius = performance.getRating();
+        } catch (NullPointerException e) {
+            Log.d(null, "No rating yet");
+        }
         color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
         coordinates = new LatLng(performance.getLat(), performance.getLng());
 
@@ -174,7 +179,7 @@ public class MapFragment extends Fragment
         // Extra: popup on the circle
         map.addCircle(new CircleOptions()
                 .center(coordinates)
-                .radius(10)
+                .radius(Math.log(radius))
                 .strokeColor(color)
                 .strokeWidth(5)
                 .fillColor(color));
