@@ -5,17 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundLight"
     >
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="#DC143C"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:padding="32dp"
         >
-
 
         <TextView
             android:id="@+id/categorieTextView"
@@ -23,10 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/locationTextView"
-            app:layout_constraintTop_toBottomOf="@+id/locationTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/locationTextView"
+            tools:text="TextView"
+            />
 
         <TextView
             android:id="@+id/nameTextView"
@@ -35,19 +33,21 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/profile_image"
-            app:layout_constraintTop_toTopOf="@+id/profile_image" />
+            app:layout_constraintTop_toTopOf="@+id/profile_image"
+            tools:text="Name"
+            />
 
-        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            />
 
         <TextView
             android:id="@+id/locationTextView"
@@ -55,10 +55,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/nameTextView"
-            app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+            tools:text="TextView"
+            />
 
         <TextView
             android:id="@+id/detailsTextView"
@@ -66,18 +67,21 @@
             android:layout_height="17dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            android:text="@string/description_colon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_image"
+            />
 
         <TextView
             android:id="@+id/detailTextView"
-            android:layout_width="286dp"
-            android:layout_height="120dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/detailsTextView"
             app:layout_constraintTop_toBottomOf="@+id/detailsTextView"
+            tools:text="TextView"
             />
 
 

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.treecio.crowdio.R
+import com.treecio.crowdio.model.Category
 import com.treecio.crowdio.model.Performance
+import kotlinx.android.synthetic.main.fragment_details.view.*
 
 /**
  * Created by Vytautas on 10/14/17.
@@ -20,7 +22,15 @@ class DetailFragment() : Fragment() {
         return view
     }
 
-    private fun showPerformance(performance: Performance) {
+    fun showPerformance(performance: Performance) {
+
+        val v = view ?: return
+        v.categorieTextView.setText(performance.category?.title ?: Category.other.title)
+
+        v.nameTextView.text = "Anonymous"
+        v.profile_image.setImageResource(R.drawable.dummy_profile_pic_male1)
+        v.locationTextView.text = "Somewhere"
+        v.detailTextView.text = performance.description
 
     }
 
