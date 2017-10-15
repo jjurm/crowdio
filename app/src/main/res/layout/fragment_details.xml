@@ -84,6 +84,16 @@
             tools:text="TextView"
             />
 
+        <ImageButton
+            android:id="@+id/praiseImageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailTextView"
+            app:srcCompat="@drawable/style_icons_product_human_gestures2" />
+
 
     </android.support.constraint.ConstraintLayout>
 
