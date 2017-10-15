@@ -184,6 +184,8 @@ public class MapFragment extends Fragment
                 .strokeWidth(5)
                 .fillColor(color));
 
+
+
         map.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
     }
 
