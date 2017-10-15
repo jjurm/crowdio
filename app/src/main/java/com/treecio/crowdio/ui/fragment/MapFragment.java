@@ -158,6 +158,7 @@ public class MapFragment extends Fragment
             public void onCircleClick(Circle circle) {
                 Intent resultIntent = new Intent(getContext(), DetailActivity.class);
                 resultIntent.putExtras(DetailActivity.Companion.getArguments(circle.getId()));
+                getContext().startActivity(resultIntent);
             }
         });
 
@@ -192,7 +193,7 @@ public class MapFragment extends Fragment
         if (rating == null) {
             rating = 0L;
         }
-        double radius = 5 * Math.log(rating + 10) - 6;
+        double radius = 20 * Math.log(rating + 15) - 20;
         color = ContextCompat.getColor(getContext(), performance.getCategory().getColor());
         coordinates = new LatLng(performance.getLat(), performance.getLng());
 
