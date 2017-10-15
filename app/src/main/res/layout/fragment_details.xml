@@ -1,147 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+
+
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingBottom="0dp"
+    android:paddingLeft="32dp"
+    android:paddingRight="32dp"
+    android:paddingTop="32dp"
     >
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:clipToPadding="false"
-        android:padding="32dp"
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="4dp"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
         >
 
-        <android.support.v7.widget.CardView
-            xmlns:card_view="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/card_view"
-            android:layout_width="0dp"
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            card_view:cardCornerRadius="4dp"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
+            android:padding="16dp"
             >
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/categorieTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="16dp"
-                >
+                android:layout_marginStart="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@android:color/tertiary_text_dark"
+                card_view:layout_constraintStart_toEndOf="@+id/performerTextView"
+                card_view:layout_constraintTop_toTopOf="parent"
+                tools:text="TextView"
+                />
 
-                <TextView
-                    android:id="@+id/categorieTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@android:color/tertiary_text_dark"
-                    card_view:layout_constraintStart_toEndOf="@+id/performerTextView"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    tools:text="TextView"
-                    />
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@android:color/tertiary_text_dark"
+                card_view:layout_constraintStart_toStartOf="@+id/categorieTextView"
+                card_view:layout_constraintTop_toBottomOf="@+id/categorieTextView"
+                tools:text="Name"
+                />
 
-                <TextView
-                    android:id="@+id/nameTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@android:color/tertiary_text_dark"
-                    card_view:layout_constraintStart_toStartOf="@+id/categorieTextView"
-                    card_view:layout_constraintTop_toBottomOf="@+id/categorieTextView"
-                    tools:text="Name"
-                    />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                app:civ_border_color="#FF878C8F"
+                app:civ_border_width="1dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    app:civ_border_color="#FF878C8F"
-                    app:civ_border_width="1dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+            <TextView
+                android:id="@+id/locationTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:textColor="@android:color/tertiary_text_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/nameTextView"
+                app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+                tools:text="TextView"
+                />
 
-                <TextView
-                    android:id="@+id/locationTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginTop="8dp"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    android:textColor="@android:color/tertiary_text_dark"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/nameTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/nameTextView"
-                    tools:text="TextView"
-                    />
+            <TextView
+                android:id="@+id/performerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/performer_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                card_view:layout_constraintStart_toStartOf="@+id/categoryTextView"
+                card_view:layout_constraintTop_toBottomOf="@+id/categoryTextView"
+                />
 
-                <TextView
-                    android:id="@+id/performerTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/performer_colon"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    card_view:layout_constraintStart_toStartOf="@+id/categoryTextView"
-                    card_view:layout_constraintTop_toBottomOf="@+id/categoryTextView"
-                    />
+            <TextView
+                android:id="@+id/placeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/place_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                card_view:layout_constraintStart_toStartOf="@+id/performerTextView"
+                card_view:layout_constraintTop_toBottomOf="@+id/performerTextView"
+                />
 
-                <TextView
-                    android:id="@+id/placeTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/place_colon"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    card_view:layout_constraintStart_toStartOf="@+id/performerTextView"
-                    card_view:layout_constraintTop_toBottomOf="@+id/performerTextView"
-                    />
+            <TextView
+                android:id="@+id/categoryTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/category_colon"
+                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                card_view:layout_constraintStart_toEndOf="@+id/profile_image"
+                card_view:layout_constraintTop_toTopOf="parent"
+                />
 
-                <TextView
-                    android:id="@+id/categoryTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="@string/category_colon"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                    card_view:layout_constraintStart_toEndOf="@+id/profile_image"
-                    card_view:layout_constraintTop_toTopOf="parent"
-                    />
+        </android.support.constraint.ConstraintLayout>
 
-            </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-        </android.support.v7.widget.CardView>
+    <TextView
+        android:id="@+id/detailsTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/description_colon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view"
+        />
 
-        <TextView
-            android:id="@+id/detailsTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:text="@string/description_colon"
-            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/card_view"
-            />
-
-        <TextView
-            android:id="@+id/detailTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/detailsTextView"
-            app:layout_constraintTop_toTopOf="@+id/detailsTextView"
-            tools:text="TextView"
-            />
+    <TextView
+        android:id="@+id/detailTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/detailsTextView"
+        app:layout_constraintTop_toTopOf="@+id/detailsTextView"
+        tools:text="TextView"
+        />
 
         <ImageButton
             android:id="@+id/praiseImageButton"
@@ -153,8 +153,18 @@
             app:layout_constraintTop_toBottomOf="@+id/detailTextView"
             app:srcCompat="@drawable/style_icons_product_human_gestures2" />
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginBottom="-32dp"
+        android:layout_marginEnd="-32dp"
+        android:layout_marginStart="-32dp"
+        android:clickable="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
-    </android.support.constraint.ConstraintLayout>
 
-
-</android.support.v4.widget.NestedScrollView>
+</android.support.constraint.ConstraintLayout>
